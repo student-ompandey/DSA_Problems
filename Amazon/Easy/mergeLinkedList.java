@@ -1,5 +1,4 @@
-import java.util.*;
-
+import java.util.LinkedList;
 
 public class mergeLinkedList {
      static class Node{
@@ -42,6 +41,46 @@ public class mergeLinkedList {
     //     System.out.println("null");
     // }
 
+    static Node reverse(Node head){
+        Node prev = null;
+        Node next = null;
+        while(head != null){
+            next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next; 
+
+        }
+        return prev;
+    }
+
+    static boolean ispalindromic(LinkedList<Integer> list){
+        Node fast = head, slow = head;
+
+
+        while(fast != null && fast.next != null){  // even 
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        if(fast != null){   // odd length
+            slow = slow.next;
+        }
+
+        slow =  reverse(slow);
+        fast = head ;
+
+        while(slow!=null && fast != null){
+            if(slow.data != fast.data){
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return true;
+
+    }
 
     public static void  main(String args[]){
         // Node head1 = new Node(1);
@@ -59,27 +98,42 @@ public class mergeLinkedList {
 
         // Problem 2 intersection of the two linked list
 
-        List<Integer> list1 = new LinkedList<>();
-        list1.add(1);
-        list1.add(2);
-        list1.add(3);
-        list1.add(4);
+        // List<Integer> list1 = new LinkedList<>();
+        // list1.add(1);
+        // list1.add(2);
+        // list1.add(3);
+        // list1.add(4);
 
-        List<Integer> list2 = new LinkedList<>();
-        list2.add(5);
-        list2.add(3);
-        list2.add(6);
+        // List<Integer> list2 = new LinkedList<>();
+        // list2.add(5);
+        // list2.add(3);
+        // list2.add(6);
 
-        Integer intersectionValue = null;
+        // Integer intersectionValue = null;
 
-        for (Integer value : list1) {
-            if (list2.contains(value)) {
-                intersectionValue = value; // only returns 3
-                break;
-            }
-        }
+        // for (Integer value : list1) {
+        //     if (list2.contains(value)) {
+        //         intersectionValue = value; // only returns 3
+        //         break;
+        //     }
+        // }
 
-        System.out.println(intersectionValue);
+        // System.out.println(intersectionValue);
+
+
+
+        // Palindrome Linked List 
+        
+        LinkedList<Integer> list = new LinkedList<>();
+
+        list.add(1);
+        list.add(2);
+        list.add(2);
+        list.add(1);
+
+
+
+
 
 
     }
