@@ -9,7 +9,7 @@ public class kClothestElement {
                 if(k>0){
                     minHeap.offer(integer);
                     k--;
-                } else if(Math.abs(minHeap.peek()-x)>Math.abs(minHeap.peek()-x)){
+                } else if(Math.abs(minHeap.peek()-x)>Math.abs(integer-x)){
                     minHeap.poll();
                     minHeap.offer(integer);
                 }
